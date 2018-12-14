@@ -52,18 +52,31 @@ public class Eleven {
         }
     }
 
+    private int summera(int par_size, int par_x, int par_y){
+        int sum = 0;
+        for (int i = par_x; i < par_x + par_size; i++) {
+            for (int j = par_y; j < par_y + par_size; j++) {
+                sum += m_matrix[i][j];
+            }
+        }
+        return sum;
+    }
+
     public String solution() {
         int max = 0;
         String result = "x,y";
-        for (int i = 1; i < m_matrix.length - 3; i++) {
-            for (int j = 0; j < m_matrix[i].length - 3; j++) {
-                int sum = m_matrix[i][j] + m_matrix[i][j+1] + m_matrix[i][j+2];
-                sum += m_matrix[i+1][j] + m_matrix[i+1][j+1] + m_matrix[i+1][j+2];
-                sum += m_matrix[i+2][j] + m_matrix[i+2][j+1] + m_matrix[i+2][j+2];
-                if(sum > max)
-                {
-                    max = sum;
-                    result =  i + "," + j;
+        for (int size = 0; size < 300; size++) {
+            for (int i = 1; i < m_matrix.length - size; i++) {
+                for (int j = 0; j < m_matrix[i].length - size; j++) {
+                    int sum = summera(size,i,j);
+    //                int sum = m_matrix[i][j] + m_matrix[i][j+1] + m_matrix[i][j+2];
+    //                sum += m_matrix[i+1][j] + m_matrix[i+1][j+1] + m_matrix[i+1][j+2];
+    //                sum += m_matrix[i+2][j] + m_matrix[i+2][j+1] + m_matrix[i+2][j+2];
+                    if(sum > max)
+                    {
+                        max = sum;
+                        result =  i + "," + j + " size " + size;
+                    }
                 }
             }
         }
