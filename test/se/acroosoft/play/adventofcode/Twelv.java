@@ -8,6 +8,8 @@ public class Twelv {
     String init;
     String org;
     int start;
+    boolean count = false;
+    int generations = 0;
 
     public Twelv(String par_initValue, String par_rules) {
         System.out.println("Inital String: " + par_initValue);
@@ -21,26 +23,24 @@ public class Twelv {
 
     public int solution() {
         for (int i = 0; i < 20; i++) {
+            if(count) {
+                generations++;
+            }
             String last = "....." + init + ".....";
             String next = "";
             start+=3;
             for (int j = 2; j < last.length() - 2; j++) {
                 next += m_rules.getProperty(last.substring(j-2,j+3),".");
             }
-            //System.out.print(i + ": ");
-            //System.out.println(next);
-            init = next;
+             init = next;
         }
         int totalPots = 0;
         String s = init;
-        //System.out.print(s);
         for (int i = 0; i < s.length(); i++) {
             if(s.charAt(i) == '#'){
                 totalPots += i-start;
             }
         }
-        //System.out.println(" -> " + totalPots);
-
         return totalPots;
     }
 
@@ -49,10 +49,11 @@ public class Twelv {
         int last = 0;
         int diff = 0;
         long sum = 0L;
-        for (int i = 0; i < 4; i++) {
+        count = true;
+        for (int i = 0; i < 8; i++) {
             sum = solution();
         }
-
+        count = false;
         for (int i = 0; i < 10; i++) {
             int next = solution();
             diff = next - last;
@@ -60,33 +61,12 @@ public class Twelv {
             last = next;
         }
 
+        System.out.println("Generations: " + generations);
         System.out.println("Sum:" + sum);
         System.out.println("Last:" + last);
         System.out.println("Diff:" + diff);
-        sum += ((50_000_000_000L - 100) / 20) * diff;
+        sum += ((50_000_000_000L - generations) / 20) * diff;
         return sum;
     }
 
-    private String prepareLine(String newLine) {
-        if(!newLine.startsWith("..")){
-            newLine = ".." + newLine;
-        }
-        if(!newLine.endsWith("..")){
-            newLine = newLine + "..";
-        }
-        return newLine;
-    }
-
-    private String char2String(char[] par_chars){
-        String s = "";
-        for (int i = 0; i < par_chars.length; i++) {
-            s = s + par_chars[i];
-        }
-        return s;
-    }
-
-
-    private String prepareFirstLine(String s) {
-        return "..." + s + ".................";
-    }
 }
