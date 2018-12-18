@@ -4,10 +4,10 @@ package se.acroosoft.play.adventofcode;
 public class aoc {
 
     public static void main(String[]args){
-        //Eleven eleven = new Eleven(4172);
-        //System.out.println(eleven.solution());
+        Eleven eleven = new Eleven(4172);
+        System.out.println(eleven.solution());
         //Test
-        /**Twelv twelv = new Twelv("#..#.#..##......###...###","...## => #\n" +
+        Twelv twelv = new Twelv("#..#.#..##......###...###","...## => #\n" +
                 "..#.. => #\n" +
                 ".#... => #\n" +
                 ".#.#. => #\n" +
@@ -20,9 +20,11 @@ public class aoc {
                 "##.## => #\n" +
                 "###.. => #\n" +
                 "###.# => #\n" +
-                "####. => #\n");**/
+                "####. => #\n");
+        System.out.println(twelv.solution());
+        System.out.println(twelv.solution2());
         //Min data
-        /**Twelv twelv = new Twelv("###.......##....#.#.#..###.##..##.....#....#.#.....##.###...###.#...###.###.#.###...#.####.##.#....#","..... => .\n" +
+        twelv = new Twelv("###.......##....#.#.#..###.##..##.....#....#.#.....##.###...###.#...###.###.#.###...#.####.##.#....#","..... => .\n" +
                 "#..## => .\n" +
                 "..### => #\n" +
                 "..#.# => #\n" +
@@ -54,9 +56,10 @@ public class aoc {
                 ".##.# => .\n" +
                 "#.#.# => #\n" +
                 ".#..# => .\n");
-        **/
+        System.out.println(twelv.solution());
+        System.out.println(twelv.solution2());
         //Daniels data
-        Twelv twelv = new Twelv(".##..##..####..#.#.#.###....#...#..#.#.#..#...#....##.#.#.#.#.#..######.##....##.###....##..#.####.#",".#... => #\n" +
+        twelv = new Twelv(".##..##..####..#.#.#.###....#...#..#.#.#..#...#....##.#.#.#.#.#..######.##....##.###....##..#.####.#",".#... => #\n" +
                 "#.... => .\n" +
                 "#.### => .\n" +
                 "#.##. => .\n" +
@@ -88,8 +91,8 @@ public class aoc {
                 "#.#.. => #\n" +
                 ".##.# => .\n" +
                 "..##. => .\n");
-
-         System.out.println(twelv.solution2());
+        System.out.println(twelv.solution());
+        System.out.println(twelv.solution2());
 
     }
 
